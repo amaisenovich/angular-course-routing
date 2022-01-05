@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ServersService } from '../servers.service';
+import { ActivatedRoute } from '@angular/router';
+import { ServerStatus } from 'src/enums/ServerStatus';
+import { Server } from 'src/models/server.model';
+import { ServersService } from 'src/services/servers.service';
 
 @Component({
   selector: 'app-edit-server',
@@ -8,11 +10,18 @@ import { ServersService } from '../servers.service';
   styleUrls: ['./edit-server.component.css']
 })
 export class EditServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: Server;
   serverName = '';
-  serverStatus = '';
+  serverStatus = ServerStatus.OFFLINE;
 
-  constructor(private serversService: ServersService) { }
+  allowEdiding = false;
+
+  fragment = '';
+
+  constructor(
+    private serversService: ServersService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.server = this.serversService.getServer(1);
@@ -21,7 +30,8 @@ export class EditServerComponent implements OnInit {
   }
 
   onUpdateServer() {
-    this.serversService.updateServer(this.server.id, {name: this.serverName, status: this.serverStatus});
+    const newServer = new Server(this.serverName, this.serverStatus, this.server.id)
+    this.serversService.updateServer(newServer);
   }
 
 }

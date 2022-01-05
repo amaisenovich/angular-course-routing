@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onOpenServersClick = () => {
-    this.router.navigate(['/servers'])
+  onOpenServersClick = (serverId: number) => {
+    this.router.navigate(['/servers', 1, 'edit'])
   }
 }
