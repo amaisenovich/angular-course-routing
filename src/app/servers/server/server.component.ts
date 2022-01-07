@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Server } from 'src/models/server.model'
 import { ServersService } from 'src/services/servers.service';
-import { URLParam } from 'src/enums/URLParam';
+// import { URLParam } from 'src/enums/URLParam';
 
 @Component({
   selector: 'app-server',
@@ -20,8 +20,12 @@ export class ServerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.server = this.serversService.getServer(+params[URLParam.ID]);
+    // this.route.params.subscribe((params) => {
+    //   this.server = this.serversService.getServer(+params[URLParam.ID]);
+    // })
+
+    this.route.data.subscribe((data: Data) => {
+      this.server = data.server
     })
   }
 

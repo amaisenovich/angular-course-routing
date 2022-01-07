@@ -1,6 +1,10 @@
 import { Server } from 'src/models/server.model'
 import { ServerStatus } from 'src/enums/ServerStatus'
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class ServersService {
   private servers = [
     new Server("PROD", ServerStatus.ONLINE),
@@ -22,5 +26,7 @@ export class ServersService {
       server.name = updates.name;
       server.status = updates.status;
     }
+
+    return server
   }
 }

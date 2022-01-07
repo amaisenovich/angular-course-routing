@@ -10,8 +10,8 @@ import { ServersComponent } from './servers/servers.component';
 import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
-import { ServersService } from '../services/servers.service';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +22,14 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ServersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
