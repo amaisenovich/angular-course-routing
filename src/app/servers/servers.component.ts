@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServersService } from '../../services/servers.service';
+import { ServersService } from 'src/services/servers.service';
 import { Server } from 'src/models/server.model'
+import { QueryParam } from 'src/enums/QueryParam';
 
 @Component({
   selector: 'app-servers',

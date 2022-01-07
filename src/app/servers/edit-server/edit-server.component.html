@@ -1,21 +1,13 @@
+<h4 *ngIf="!allowEditing">You don't have editing permissions!</h4>
 <div class="form-group">
   <label for="name">Server Name</label>
-  <input
-    type="text"
-    id="name"
-    class="form-control"
-    [(ngModel)]="serverName">
+  <input type="text" id="name" class="form-control" [(ngModel)]="serverName" [disabled]="!allowEditing">
 </div>
 <div class="form-group">
   <label for="status">Server Status</label>
-  <select
-    id="status"
-    class="form-control"
-    [(ngModel)]="serverStatus">
+  <select id="status" class="form-control" [(ngModel)]="serverStatus" [disabled]="!allowEditing">
     <option value="online">Online</option>
     <option value="offline">Offline</option>
   </select>
 </div>
-<button
-  class="btn btn-primary"
-  (click)="onUpdateServer()">Update Server</button>
+<button class="btn btn-primary" (click)="onUpdateServer()" [disabled]="!allowEditing">Update Server</button>

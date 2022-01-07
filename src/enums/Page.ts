@@ -1,5 +1,5 @@
 export enum Page {
-  HOME = '',
+  HOME = 'home',
   SERVERS = 'servers',
   USERS = 'users',
   EDIT = 'edit'

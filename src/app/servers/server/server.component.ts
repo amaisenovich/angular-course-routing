@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Server } from 'src/models/server.model'
 import { ServersService } from 'src/services/servers.service';
-import { QueryParam } from 'src/enums/QueryParam';
+import { URLParam } from 'src/enums/URLParam';
 
 @Component({
   selector: 'app-server',
@@ -21,11 +21,11 @@ export class ServerComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.server = this.serversService.getServer(+params[QueryParam.ID]);
+      this.server = this.serversService.getServer(+params[URLParam.ID]);
     })
   }
 
   onEditClick = () => {
-    this.roter.navigate(['edit'], { relativeTo: this.route })
+    this.roter.navigate(['edit'], { relativeTo: this.route, queryParamsHandling: 'preserve' }) //, queryParams: { [QueryParam.ALLOW_EDITING]: true } })
   }
 }
